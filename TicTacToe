@@ -1,5 +1,6 @@
 import java.util.*;
 public class TicTacToe {
+    static int a[] = new int[10];
     public static void main(String[] args) {
         char [] [] gameBoard= {{' ','|',' ','|',' '},
         {'-','+','-','+','-'},
@@ -29,6 +30,10 @@ public class TicTacToe {
             }
             System.out.println("Enter the box no. (from 1 to 9)");
             int ch = sc.nextInt();
+            while (a[ch-1]==1){
+                System.out.print("This box is already filled. Pleaase re-enter the choice - ");
+                ch = sc.nextInt();
+            }
             switch (ch){
                 case 1 : 
                     gameBoard [0][0] = cc;
@@ -68,8 +73,9 @@ public class TicTacToe {
                 break;
             }
             else if(i==9){
-                System.out.println("        DRAW");
+                System.out.println("\n\n          DRAW");
             }
+            a[ch-1]=1;
         }
     }
     static void printBoard(char[][] gameBoard){
